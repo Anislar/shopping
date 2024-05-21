@@ -27,7 +27,7 @@ export const Home = () => {
   const { products, status, filter } = useSelector((state) => state.product);
 
   const [slice, setSlice] = useState(5);
-  const paddingTop = top > 0 ? top + 5 : 10;
+  const paddingTop = top > 0 ? top + 10 : 20;
   useEffect(() => {
     dispatch(getAllProducts(filter));
   }, [filter]);
