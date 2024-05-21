@@ -1,0 +1,35 @@
+export const theme = {
+  colors: {
+    white: "#fff",
+    black: "#000",
+    grayBG: "#e5e5e5",
+    danger: "#ff0000",
+    neutral: (opacity) => ` rgba(10,10,10,${opacity})`,
+    primary: "#8559F8",
+    secondary: "#FFC700",
+  },
+  fontWeights: {
+    medium: "500",
+    semibold: "600",
+    bold: "700",
+  },
+  raduis: {
+    xxs: 5,
+    xs: 10,
+    sm: 12,
+    md: 14,
+    lg: 16,
+    xl: 18,
+    xxl: 20,
+  },
+  space: {
+    xxs: 2,
+    xs: 4,
+    sm: 8,
+    md: 12,
+    lg: 14,
+    xl: 16,
+    xxl: 18,
+    xxxl: 20,
+  },
+};
