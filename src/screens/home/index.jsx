@@ -5,7 +5,7 @@ import {
   ActivityIndicator,
   Image,
 } from "react-native";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -28,6 +28,8 @@ export const Home = () => {
 
   const [slice, setSlice] = useState(5);
   const paddingTop = top > 0 ? top + 10 : 20;
+
+  // getch product
   useEffect(() => {
     dispatch(getAllProducts(filter));
   }, [filter]);
@@ -36,6 +38,7 @@ export const Home = () => {
       <StatusBar style="auto" backgroundColor="#f5f5f5" translucent={false} />
       {/* Header */}
       <View style={[styles.header, { paddingTop }]}>
+        {/* Profile */}
         <Image
           source={{
             uri: "https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
@@ -57,7 +60,7 @@ export const Home = () => {
           onPress={() => {
             navigation.navigate("Cart");
           }}>
-          <AntDesign name="shoppingcart" size={24} />
+          <AntDesign name="shoppingcart" size={30} />
           <Text
             style={[
               styles.cartText,

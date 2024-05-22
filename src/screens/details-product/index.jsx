@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { styles } from "./style";
+import ButtonPrimary from "../../components/Button";
 export const DetailProduct = ({ route }) => {
   const { product } = route.params;
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export const DetailProduct = ({ route }) => {
         date: new Date().toISOString(),
         products: [
           {
-            productId: item.id,
+            productId: product.id,
             quantity: 1,
           },
         ],
@@ -37,7 +38,6 @@ export const DetailProduct = ({ route }) => {
       }}>
       <View style={styles.container}>
         <Animated.Image
-          entering={FadeInDown.delay(250)}
           sharedTransitionTag={"prodcutImage"}
           source={{ uri: product.image }}
           style={styles.image}
@@ -74,14 +74,14 @@ export const DetailProduct = ({ route }) => {
           padding: theme.space.xxl,
           borderRadius: theme.raduis.xl,
         }}>
-        <Button
+        <ButtonPrimary
           disabled={status.state === "loading" && item.id === status.id}
+          onPress={addCart}
           title={
             status.state === "loading" && item.id === status.id
               ? "Chargement..."
               : "Add to Cart"
           }
-          onPress={addCart}
         />
       </Animated.View>
     </View>

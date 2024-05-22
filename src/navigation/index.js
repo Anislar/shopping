@@ -1,8 +1,9 @@
+import { TouchableOpacity } from "react-native";
 import { resetCart } from "../redux/reducer/cartReducers";
 import { store } from "../redux/store";
 import { Home, DetailProduct, Shopping, Cart } from "../screens";
 import { EvilIcons } from "@expo/vector-icons";
-export const routerArray = [
+export const navigationArray = [
   {
     name: "Home",
     component: Home,
@@ -25,14 +26,12 @@ export const routerArray = [
     options: {
       headerShown: true,
       headerRight: () => (
-        <EvilIcons
+        <TouchableOpacity
           onPress={() => {
             store.dispatch(resetCart());
-          }}
-          name="trash"
-          size={30}
-          color="black"
-        />
+          }}>
+          <EvilIcons name="trash" size={30} color="black" />
+        </TouchableOpacity>
       ),
 
       title: "Cart",

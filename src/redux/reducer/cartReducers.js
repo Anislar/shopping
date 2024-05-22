@@ -1,5 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import MainService from "../../services/main.services";
+
+export const addToCart = createAsyncThunk(
+  "carts/post",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await MainService.addToCart(payload);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -73,18 +85,6 @@ const cartSlice = createSlice({
     });
   },
 });
-
-export const addToCart = createAsyncThunk(
-  "carts/post",
-  async (payload, { rejectWithValue }) => {
-    try {
-      const response = await MainService.addToCart(payload);
-      return response;
-    } catch (error) {
-      return rejectWithValue(error);
-    }
-  }
-);
 
 export default cartSlice.reducer;
 export const { resetCart, updateQteCart } = cartSlice.actions;
