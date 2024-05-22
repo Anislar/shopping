@@ -19,6 +19,7 @@ import { theme } from "../../constants/theme";
 import { styles } from "./style";
 import { hp } from "../../helpers/commons";
 import { StatusBar } from "expo-status-bar";
+import { resetStatus } from "../../redux/reducer/cartReducers";
 export const Home = () => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
@@ -32,6 +33,7 @@ export const Home = () => {
   // getch product
   useEffect(() => {
     dispatch(getAllProducts(filter));
+    dispatch(resetStatus());
   }, [filter]);
   return (
     <View style={styles.container}>

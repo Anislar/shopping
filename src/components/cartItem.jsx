@@ -16,9 +16,9 @@ import { updateQteCart } from "../redux/reducer/cartReducers";
  */
 export const CartItem = ({ item, getProduct }) => {
   const dispatch = useDispatch();
-
+  if (!item) return null;
   return (
-    <View key={item?.productId} style={styles.cartItem}>
+    <View key={item?.id} style={styles.cartItem}>
       <View style={styles.detailContainer}>
         <Image
           source={{ uri: getProduct(item?.productId)?.image }}

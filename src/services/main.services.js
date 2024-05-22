@@ -27,7 +27,6 @@ class MainSericeApi {
   async getCarts() {
     const response = await this.axiosInstance.get("carts/user/1");
     if (response.status === 200) {
-      console.log(response);
       return response.data;
     } else throw new Error("Something went wrong");
   }

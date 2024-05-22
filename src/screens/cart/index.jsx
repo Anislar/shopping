@@ -32,7 +32,7 @@ export const Cart = () => {
   const getTotal = () => {
     let total = 0;
     carts?.forEach((item) => {
-      total += getProduct(item.productId)?.price * item.quantity;
+      total += getProduct(item?.productId)?.price * item?.quantity;
     });
     return total.toFixed(2);
   };

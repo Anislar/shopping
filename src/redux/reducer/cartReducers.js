@@ -27,6 +27,12 @@ const cartSlice = createSlice({
     resetCart: (state) => {
       state.carts = [];
     },
+    resetStatus: (state) => {
+      state.status = {
+        state: "idle",
+        id: null,
+      };
+    },
     // Update quantity of a product in the cart
     updateQteCart: (state, action) => {
       if (action.payload.quantity === 0) {
@@ -54,23 +60,19 @@ const cartSlice = createSlice({
       };
     });
     builder.addCase(addToCart.fulfilled, (state, action) => {
-      const payload = { ...action.payload.products[0] };
-      let array = [];
-      if (
-        state.carts.length === 0 ||
-        state.carts.find((cart) => cart?.productId === payload.productId) ===
-          undefined
-      ) {
-        array = [...state.carts, payload];
+      const payload = action.payload.products[0];
+      let array = [...state.carts];
+      if (!array.find((cart) => cart?.productId === payload.productId)) {
+        array = [...array, payload];
       } else {
-        array = [...state.carts].map((cart) => {
+        array = array.map((cart) => {
           if (cart?.productId === payload.productId) {
             return { ...cart, quantity: cart.quantity + 1 };
           } else {
+            return cart;
           }
         });
       }
-
       state.carts = [...array];
       state.status = {
         state: "success",
@@ -87,5 +89,5 @@ const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-export const { resetCart, updateQteCart } = cartSlice.actions;
+export const { resetCart, updateQteCart, resetStatus } = cartSlice.actions;
 //

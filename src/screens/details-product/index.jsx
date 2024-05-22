@@ -75,10 +75,10 @@ export const DetailProduct = ({ route }) => {
           borderRadius: theme.raduis.xl,
         }}>
         <ButtonPrimary
-          disabled={status.state === "loading" && item.id === status.id}
+          disabled={status.state === "loading" && product.id === status.id}
           onPress={addCart}
           title={
-            status.state === "loading" && item.id === status.id
+            status.state === "loading" && product.id === status.id
               ? "Chargement..."
               : "Add to Cart"
           }
