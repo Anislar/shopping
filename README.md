@@ -60,7 +60,8 @@ Before you begin, ensure you have met the following requirements:
 
 ## Project Structure
 
-store-app/
+```
+shopping/
 ├── components/
 │ ├── cartItem.js
 │ └── ...
@@ -79,10 +80,14 @@ store-app/
 │ └── ...
 ├── services/
 │ ├── main.services.js
-│
+│ └── ...
 ├── App.jsx
 ├── app.json
 └── package.json
+
+```
+
+
 ## Dependencies
 
 - **Expo:** Framework for universal React applications.
