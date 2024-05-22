@@ -17,12 +17,12 @@ import { styles } from "./style";
 export const Cart = () => {
   const navigation = useNavigation();
   const { status, carts } = useSelector((state) => state.cart);
-  const { products } = useSelector((state) => state.product);
+  const { allProducts } = useSelector((state) => state.product);
 
   // Get product by id from the list of products
   const getProduct = (id) => {
     try {
-      return products?.find((product) => product.id === id);
+      return allProducts?.find((product) => product.id === id);
     } catch (error) {
       return "";
     }

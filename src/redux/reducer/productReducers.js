@@ -16,7 +16,10 @@ export const getAllProducts = createAsyncThunk(
 const productSlice = createSlice({
   name: "product",
   initialState: {
+    // Add products
     products: [],
+    // Add allProducts
+    allProducts: [],
     status: "idle",
     filter: "all",
   },
@@ -31,6 +34,7 @@ const productSlice = createSlice({
     });
     builder.addCase(getAllProducts.fulfilled, (state, action) => {
       state.products = action.payload;
+      if (action.meta.arg === "all") state.allProducts = action.payload;
       state.status = "success";
     });
     builder.addCase(getAllProducts.rejected, (state) => {

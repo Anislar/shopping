@@ -10,10 +10,10 @@ export const Shopping = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const { carts } = useSelector((state) => state.cart);
-  const { products } = useSelector((state) => state.product);
+  const { allProducts } = useSelector((state) => state.product);
   const getProduct = (id) => {
     try {
-      return products?.find((product) => product.id === id);
+      return allProducts?.find((product) => product.id === id);
     } catch (error) {
       return "";
     }
